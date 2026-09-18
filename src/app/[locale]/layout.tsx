@@ -1,5 +1,6 @@
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { MockAuthProvider } from "@/context/MockAuthProvider";
 import { isRtl } from "@/i18n/languages";
 import { type Locale, routing } from "@/i18n/routing";
 import "flatpickr/dist/flatpickr.css";
@@ -39,7 +40,9 @@ export default async function RootLayout({
       <body className={`${outfit.className} dark:bg-gray-900`}>
         <NextIntlClientProvider>
           <ThemeProvider>
-            <SidebarProvider>{children}</SidebarProvider>
+            <MockAuthProvider>
+              <SidebarProvider>{children}</SidebarProvider>
+            </MockAuthProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
